@@ -32,8 +32,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <skipTests>true</skipTests>
-        <!-- 192.168.188.131是我自己虚拟机的ip，2375是docker默认的端口 -->
-        <docker.host>http://192.168.188.131:2375</docker.host>
+        <docker.host>http://192.168.3.105:2375</docker.host>
         <docker.maven.plugin.version>0.40.0</docker.maven.plugin.version>
         <java.version>1.8</java.version>
         <spring-boot.version>2.7.0</spring-boot.version>
@@ -238,36 +237,35 @@
                             </goals>
                         </execution>
                     </executions>
-<!--                    本地启动注掉docker-->
-<!--                    <configuration>-->
-<!--                        &lt;!&ndash; Docker 远程管理地址&ndash;&gt;-->
-<!--                        <dockerHost>${docker.host}</dockerHost>-->
-<!--                        <images>-->
-<!--                            <image>-->
-<!--                                &lt;!&ndash;定义镜像名称&ndash;&gt;-->
-<!--                                <name>mall/${project.name}:${project.version}</name>-->
-<!--                                &lt;!&ndash;定义镜像构建行为&ndash;&gt;-->
-<!--                                <build>-->
-<!--                                    &lt;!&ndash;定义基础镜像&ndash;&gt;-->
-<!--                                    <from>java:8</from>-->
-<!--                                    <args>-->
-<!--                                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>-->
-<!--                                    </args>-->
-<!--                                    &lt;!&ndash;定义哪些文件拷贝到容器中&ndash;&gt;-->
-<!--                                    <assembly>-->
-<!--                                        &lt;!&ndash;定义拷贝到容器的目录&ndash;&gt;-->
-<!--                                        <targetDir>/</targetDir>-->
-<!--                                        &lt;!&ndash;只拷贝生成的jar包&ndash;&gt;-->
-<!--                                        <descriptorRef>artifact</descriptorRef>-->
-<!--                                    </assembly>-->
-<!--                                    &lt;!&ndash;定义容器启动命令&ndash;&gt;-->
-<!--                                    <entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>-->
-<!--                                    &lt;!&ndash;定义维护者&ndash;&gt;-->
-<!--                                    <maintainer>macrozheng</maintainer>-->
-<!--                                </build>-->
-<!--                            </image>-->
-<!--                        </images>-->
-<!--                    </configuration>-->
+                    <configuration>
+                        <!-- Docker 远程管理地址-->
+                        <dockerHost>${docker.host}</dockerHost>
+                        <images>
+                            <image>
+                                <!--定义镜像名称-->
+                                <name>mall/${project.name}:${project.version}</name>
+                                <!--定义镜像构建行为-->
+                                <build>
+                                    <!--定义基础镜像-->
+                                    <from>java:8</from>
+                                    <args>
+                                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                                    </args>
+                                    <!--定义哪些文件拷贝到容器中-->
+                                    <assembly>
+                                        <!--定义拷贝到容器的目录-->
+                                        <targetDir>/</targetDir>
+                                        <!--只拷贝生成的jar包-->
+                                        <descriptorRef>artifact</descriptorRef>
+                                    </assembly>
+                                    <!--定义容器启动命令-->
+                                    <entryPoint>["java", "-jar","-Dspring.profiles.active=prod","/${project.build.finalName}.jar"]</entryPoint>
+                                    <!--定义维护者-->
+                                    <maintainer>macrozheng</maintainer>
+                                </build>
+                            </image>
+                        </images>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
