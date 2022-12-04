@@ -24,7 +24,8 @@ import java.util.List;
 
 /**
  * 认证服务器配置
- * Created by macro on 2020/6/19.
+ * lss批注：用来添加认证服务相关配置Oauth2ServerConfig。
+ *      在此之前需要配置加载用户信息的服务UserServiceImpl及RSA的钥匙对KeyPair
  */
 @AllArgsConstructor
 @Configuration

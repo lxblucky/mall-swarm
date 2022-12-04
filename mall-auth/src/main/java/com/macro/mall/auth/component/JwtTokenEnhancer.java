@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * JWT内容增强器
- * Created by macro on 2020/6/19.
+ * lss批注：往JWT中添加自定义信息的话，比如说登录用户的ID，可以自己实现TokenEnhancer接口
  */
 @Component
 public class JwtTokenEnhancer implements TokenEnhancer {

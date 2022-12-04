@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  * 获取RSA公钥接口
- * Created by macro on 2020/6/19.
+ * lss批注：由于我们的网关服务需要RSA的公钥来验证签名是否合法，所以认证服务需要有个接口把公钥暴露出来
  */
 @RestController
 @Api(tags = "KeyPairController", description = "获取RSA公钥接口")

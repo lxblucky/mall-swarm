@@ -27,6 +27,7 @@ import reactor.core.publisher.Mono;
  */
 @AllArgsConstructor
 @Configuration
+//lss批注： oauth2+jwt配置：对网关服务进行配置安全配置，由于Gateway使用的是WebFlux，所以需要使用@EnableWebFluxSecurity注解开启
 @EnableWebFluxSecurity
 public class ResourceServerConfig {
     private final AuthorizationManager authorizationManager;

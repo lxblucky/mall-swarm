@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户管理业务类
- * Created by macro on 2020/6/19.
+ * lss批注：用于加载用户信息
  */
 @Service
 public class UserServiceImpl implements UserDetailsService {

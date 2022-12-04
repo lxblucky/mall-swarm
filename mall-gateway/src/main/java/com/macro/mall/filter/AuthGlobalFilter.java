@@ -17,7 +17,7 @@ import java.text.ParseException;
 
 /**
  * 将登录用户的JWT转化成用户信息的全局过滤器
- * Created by macro on 2020/6/17.
+ * lss批注：当鉴权通过后将JWT令牌中的用户信息解析出来，然后存入请求的Header中，这样后续服务就不需要解析JWT令牌了，可以直接从请求的Header中获取到用户信息
  */
 @Component
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
@@ -35,6 +35,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
+            LOGGER.info("gatway统一解析的用户信息：");
             LOGGER.info("AuthGlobalFilter.filter() user:{}",userStr);
             ServerHttpRequest request = exchange.getRequest().mutate().header(AuthConstant.USER_TOKEN_HEADER, userStr).build();
             exchange = exchange.mutate().request(request).build();

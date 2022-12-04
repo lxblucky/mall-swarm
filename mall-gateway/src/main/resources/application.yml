@@ -45,7 +45,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://localhost:8201/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址
+          jwk-set-uri: 'http://localhost:8201/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址 lss批注：访问的是auth的接口：/publicKey
   redis:
     database: 0
     port: 6379
@@ -63,8 +63,8 @@ secure:
       - "/*/*.png"
       - "/*/*.ico"
       - "/webjars/**"
-      - "/actuator/**"
-      - "/mall-auth/oauth/token"
+      - "/actuator/**"                  #lss批注：oauth2的jwt鉴权白名单
+      - "/mall-auth/oauth/token"        #lss批注：oauth2的jwt鉴权白名单
       - "/mall-auth/rsa/publicKey"
       - "/mall-search/**"
       - "/mall-portal/sso/login"
