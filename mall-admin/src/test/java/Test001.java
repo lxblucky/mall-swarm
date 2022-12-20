@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 public class Test001 {
     //hutool加密
     @Test
-    public void jiemi(){
-        String pwd = "111";
+    public void jiami(){
+        String pwd = "112";
 
         //将密码进行加密操作
         String encodePwd = BCrypt.hashpw(pwd);

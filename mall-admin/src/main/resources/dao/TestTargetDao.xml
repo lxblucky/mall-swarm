@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.TestTargetDao">
+
+    <resultMap id="BaseResultMap" type="com.macro.mall.model.TestTarget">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="zbname" jdbcType="VARCHAR" property="zbname" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    </resultMap>
+
+    <select id="queryList" resultMap="BaseResultMap">
+        SELECT *
+        FROM test_zb_zbgl
+        WHERE 1=1
+        <if test="queryParam.id!=null and queryParam.id!=''">
+            AND id = #{queryParam.id}
+        </if>
+        <if test="queryParam.zbname!=null and queryParam.zbname!=''">
+            AND zbname LIKE concat("%",#{queryParam.zbname},"%")
+        </if>
+        <if test="queryParam.createTime!=null and queryParam.createTime!=''">
+            AND create_time LIKE concat(#{queryParam.createTime},"%")
+        </if>
+        <if test="queryParam.parentId!=null and queryParam.parentId!=''">
+            AND parent_id = #{queryParam.parentId}
+        </if>
+
+    </select>
+</mapper>
