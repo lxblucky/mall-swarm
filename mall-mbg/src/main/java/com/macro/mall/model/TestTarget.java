@@ -1,7 +1,11 @@
 package com.macro.mall.model;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -25,5 +29,5 @@ public class TestTarget implements Serializable {
     private Date createTime;
 
     @ApiModelProperty(value = "父节点id")
-    private Long parentId;
+    private String parentId;
 }

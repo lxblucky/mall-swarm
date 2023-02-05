@@ -25,6 +25,35 @@
         <if test="queryParam.parentId!=null and queryParam.parentId!=''">
             AND parent_id = #{queryParam.parentId}
         </if>
-
+        order by create_time desc
     </select>
+
+    <insert id="addtarget" parameterType="com.macro.mall.dto.TestTargetQueryParam">
+        insert into test_zb_zbgl (zbname,create_time,parent_id)
+        values(#{zbname,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{parentId,jdbcType=INTEGER})
+    </insert>
+    <insert id="addtargetList">
+        insert into test_zb_zbgl (id,zbname,create_time,parent_id)
+        values
+        <foreach collection="list" item="item" separator="," index="index">
+            (
+            #{item.id},
+            #{item.zbname},
+            #{item.createTime},
+            #{item.parentId}
+            )
+        </foreach>
+    </insert>
+    <select id="detailTarget" parameterType="long" resultMap="BaseResultMap">
+        SELECT *
+        FROM test_zb_zbgl
+        WHERE id = #{id,jdbcType=BIGINT}
+    </select>
+    <update id="updateTarget" parameterType="com.macro.mall.model.TestTarget">
+        update test_zb_zbgl
+        set zbname = #{zbname,jdbcType=VARCHAR},
+          parent_id = #{parentId,jdbcType=BIGINT},
+          create_time = #{createTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>
