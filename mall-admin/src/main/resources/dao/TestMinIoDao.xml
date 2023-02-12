@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.TestMinIoDao">
+
+    <resultMap id="BaseResultMap" type="com.macro.mall.dto.TestPhotowall">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="dirs" jdbcType="VARCHAR" property="dirs" />
+        <result column="filename" jdbcType="VARCHAR" property="filename" />
+        <result column="sort" jdbcType="BIGINT" property="sort" />
+        <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <insert id="addPhotowall" parameterType="com.macro.mall.dto.TestTargetQueryParam">
+        insert into test_photowall (dirs,filename,sort,create_user,create_time)
+        values(#{dirs,jdbcType=VARCHAR},#{filename,jdbcType=VARCHAR},#{sort,jdbcType=VARCHAR},
+        #{createUser,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="queryList" resultMap="BaseResultMap">
+        SELECT *
+        FROM test_photowall
+        <if test="queryParam.id!=null and queryParam.id!=''">
+            where id = #{queryParam.id}
+        </if>
+        order by create_time desc
+    </select>
+
+    <delete id="removePic" parameterType="java.lang.Integer">
+        delete from test_photowall
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+</mapper>

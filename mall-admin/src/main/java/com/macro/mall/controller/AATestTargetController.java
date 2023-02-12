@@ -3,7 +3,6 @@ package com.macro.mall.controller;
 import com.alibaba.excel.EasyExcel;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.dao.TestTargetDao;
 import com.macro.mall.dto.TestTargetQueryParam;
 import com.macro.mall.model.TestTarget;
 import com.macro.mall.service.TestTargetService;
@@ -28,7 +27,7 @@ import java.util.List;
 @Controller
 @Api(tags = "TestTargetController", description = "测试指标触点")
 @RequestMapping("/test/target")
-public class TestTargetController {
+public class AATestTargetController {
     @Autowired
     private TestTargetService testTargetService;
 

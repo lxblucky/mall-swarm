@@ -1,15 +1,11 @@
 package com.macro.mall.util;
 
-import com.alibaba.excel.annotation.ExcelProperty;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 /**
- * @Description: TODO
+ * @Description: easyExcel上传的实体类
  * @Author: lss
  * @CreateTime: 2023-02-03 13:23
  * @Version: 1.0
